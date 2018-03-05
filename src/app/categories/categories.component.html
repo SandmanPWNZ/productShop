@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let category of categories" >
+      <a href="#" (click)="category.hide = !category.hide">{{category.title}}</a> <span class="badge badge-primary badge-pill float-right">{{category.weight}}</span>
+      <category class="mt-3" [category]="category.subCategory" *ngIf="category.subCategory && category.hide"></category>
+      <products class="mt-3" [products]="category.subCategory" *ngIf="category.products && category.hide"></products>
+  </li>
+</ul>

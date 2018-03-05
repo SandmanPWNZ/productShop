@@ -1,0 +1,12 @@
+<button (click)="asc = !asc" class="btn btn-primary">Отсортировать по весу</button>
+<ul class="list-group mt-3">
+    <li class="list-group-item" *ngFor="let product of products | orderby: sort : asc ">
+        <i class="fa fa-pencil" aria-hidden="true" (click)="editProduct(product)"></i>
+        {{product.title}}
+        <span class="badge badge-primary badge-pill float-right">
+        {{product.weight}}
+        </span>
+        <product-form *ngIf="product === editableProduct" (productCreated)="makeCategory($event, product)" (productEdited)="saveProduct($event, product)" [(product)]="editableProduct"></product-form>
+    </li>
+</ul>
+<button (click)="addProduct(products)" class="btn btn-success mt-3 float-right">Добавить товар</button>

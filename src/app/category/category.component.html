@@ -1,0 +1,8 @@
+<button (click)="asc = !asc" class="btn btn-primary">Отсортировать по весу</button>
+<ul class="list-group mt-3">
+    <li class="list-group-item" *ngFor="let cat of category | orderby: sort : asc">
+        <a href="#" (click)="cat.hide = !cat.hide">{{cat.title}}</a> <span class="badge badge-primary badge-pill float-right">{{cat.weight}}</span>
+        <category class="mt-3" [category]="cat.subCategory" *ngIf="cat.subCategory && cat.hide"></category>
+        <products class="mt-3" [products]="cat.products" *ngIf="cat.products && cat.hide"></products>
+    </li>
+</ul>
